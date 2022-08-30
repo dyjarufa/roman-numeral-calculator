@@ -1,25 +1,27 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Head from "next/head";
 import InputField from "src/components/InputField/InputField";
 
-import styles from './index.module.css'
+import styles from "./index.module.css";
 import { convertToRoman } from "src/utils/romanNumberCalculator";
 
 export default function Home() {
+  const [romanNumber, setRomanNumber] = useState('')
+  const inputFieldRef = useRef<HTMLInputElement>(null);
 
-  const inputFieldRef = useRef<HTMLInputElement>(null)
-
-  
   useEffect(() => {
-    inputFieldRef.current?.focus()
-  },
-  )
+    inputFieldRef.current?.focus();
+  });
 
   const handleConvertNumber = () => {
-    // console.log(inputFieldRef.current?.value)
-    convertToRoman(inputFieldRef.current?.value)
-  }
+    let numberConverted = convertToRoman(inputFieldRef.current?.value);
+    if(numberConverted) return setRomanNumber(numberConverted)
+    setRomanNumber('')
+  };
+  
+
+  
 
   return (
     <div className={styles.container}>
@@ -29,17 +31,14 @@ export default function Home() {
       </Head>
 
       <div className={styles.content}>
-        <InputField 
-          name="number" 
+        <InputField
+          name="number"
           label="Type a number"
           ref={inputFieldRef}
           onChange={handleConvertNumber}
-          type="number"
         />
+        <p>{romanNumber}</p>
       </div>
-      <p>
-        
-      </p>
     </div>
   );
 }

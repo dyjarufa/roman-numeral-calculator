@@ -1,4 +1,4 @@
-export const convertToRoman = (value)  => {
+export function convertToRoman(num: number) {
 
   const romanNumber = {
     M: 1000,
@@ -23,19 +23,12 @@ export const convertToRoman = (value)  => {
   let key: romanKeys;
 
   for (key in romanNumber) {
-    if(!value) return
-    while(value >= romanNumber[key]) {
+    while(num >= romanNumber[key]) {
       roman += key
-      console.log(roman)
-      value -= romanNumber[key]
+      num -= romanNumber[key]
     }
   }
 
   return roman
 }
-
-
-
-
-
 
