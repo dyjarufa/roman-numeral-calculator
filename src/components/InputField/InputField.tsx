@@ -1,9 +1,22 @@
+import React, { forwardRef, InputHTMLAttributes } from "react";
 
-export function InputField() {
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  name: string;
+  label: string;
+}
+
+const InputField: React.ForwardRefRenderFunction<HTMLInputElement,InputProps> = ({name, label, ...rest}, ref) => {
   return (
-    <>
-      <label>Type a number</label>
-      <input></input>
-    </>
+    <div className="input-block">
+      <label htmlFor={name}>{label}</label>
+      <input 
+        ref={ref}
+        type="text"
+        autoFocus
+        {...rest}
+      />
+    </div>
   );
 }
+
+export default forwardRef(InputField)
