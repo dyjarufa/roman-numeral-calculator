@@ -16,7 +16,7 @@ export default function Home() {
   });
 
   const handleConvertNumber = () => {
-    let numberConverted = convertToRoman(inputFieldRef.current?.value);
+    let numberConverted = convertToRoman(Number(inputFieldRef.current?.value));
     if (numberConverted) return setRomanNumber(numberConverted);
     setRomanNumber("");
   };
