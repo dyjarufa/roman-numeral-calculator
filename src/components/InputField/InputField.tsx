@@ -1,5 +1,7 @@
 import React, { forwardRef, InputHTMLAttributes } from "react";
 
+import styles from './InputField.module.css'
+
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label: string;
@@ -7,8 +9,8 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const InputField: React.ForwardRefRenderFunction<HTMLInputElement,InputProps> = ({name, label, ...rest}, ref) => {
   return (
-    <div className="input-block">
-      <label htmlFor={name}>{label}</label>
+    <div className={styles.container}>
+      <label>{label}</label>
       <input 
         ref={ref}
         type="text"
