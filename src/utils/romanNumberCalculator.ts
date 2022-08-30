@@ -22,6 +22,8 @@ export function convertToRoman(num: number) {
   
   let key: romanKeys;
 
+  if(num > 1000) return
+
   for (key in romanNumber) {
     while(num >= romanNumber[key]) {
       roman += key
