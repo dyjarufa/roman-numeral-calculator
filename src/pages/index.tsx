@@ -4,6 +4,7 @@ import Head from "next/head";
 import InputField from "src/components/InputField/InputField";
 
 import styles from './index.module.css'
+import { convertToRoman } from "src/utils/romanNumberCalculator";
 
 export default function Home() {
 
@@ -16,9 +17,9 @@ export default function Home() {
   )
 
   const handleConvertNumber = () => {
-    console.log(inputFieldRef.current?.value)
+    // console.log(inputFieldRef.current?.value)
+    convertToRoman(inputFieldRef.current?.value)
   }
-
 
   return (
     <div className={styles.container}>
@@ -33,6 +34,7 @@ export default function Home() {
           label="Type a number"
           ref={inputFieldRef}
           onChange={handleConvertNumber}
+          type="number"
         />
       </div>
       <p>
